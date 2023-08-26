@@ -8,7 +8,7 @@
 .title {
   letter-spacing: -0.025em;
   font-weight: 800;
-  color: var(--text-purple);
+  color: var(--text-main);
   font-size: 3rem;
   line-height: 1;
 }
@@ -26,19 +26,15 @@
 }
 
 .button {
-  background-color: var(--text-purple);
+  background-color: var(--accent-1);
+  border-radius: 2px;
   cursor: pointer;
   color: white;
   outline: 0;
   border: 0px;
   margin-top: 1.25rem;
   padding: 1rem 2.5rem;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.button:hover {
-  background-color: var(--text-purple-dark);
+  line-height: 1.25rem;
 }
 
 /** 

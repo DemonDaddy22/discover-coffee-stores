@@ -6,20 +6,22 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --accent-1: #171839;
-  --text-purple: rgb(26, 18, 120);
-  --text-purple-dark: rgb(10, 7, 71);
-  --text-black: rgba(17, 24, 39, 1);
+  --accent-1: #da7516;
+  --text-main: rgb(255, 151, 47);
+  --text-secondary: rgb(240, 201, 162);
+  --text-main-dark: rgb(173, 97, 20);
+  --text-black: rgb(18, 13, 8);
   --text-white-100: rgba(229, 231, 235, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --accent-1: #252852;
-    --text-purple: rgba(67, 56, 202, 1);
-    --text-purple-dark: rgba(79, 70, 229, 1);
-    --text-black: rgba(17, 24, 39, 1);
+    --accent-1: #a35f0b;
+    --text-main: rgb(193, 122, 46);
+    --text-secondary: rgb(160, 125, 89);
+    --text-main-dark: rgb(229, 157, 70);
+    --text-black: rgb(24, 16, 9);
     --text-white-100: rgba(229, 231, 235, 1);
   }
 }

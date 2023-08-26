@@ -1,41 +1,52 @@
 'use client';
 import Banner from '@/components/Banner';
 import styles from './page.module.css';
-import Image from 'next/image';
 import Card from '@/components/Card';
 import { motion, Variants } from 'framer-motion';
-import data from '../coffee-stores.json';
+import coffeeStoresData from '../coffee-stores.json';
+import { getIdFromName } from '@/utils';
 
-const cardsContainerVariants: Variants = {
+const coffeeStoreVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { delayChildren: 0.5, staggerChildren: 0.075 } },
+  visible: { opacity: 1, transition: { delayChildren: 0.5, staggerChildren: 0.1 } },
 };
 
-export default function Home() {
+const headerVariants: Variants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0 },
+};
+
+const cardsVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { delayChildren: 0.1, staggerChildren: 0.075 } },
+};
+
+const Home = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <Banner buttonText='View nearby shops' onButtonClick={() => {}} />
-        <div className={styles.hero}>
-          <Image src='/static/hero-image.png' alt='coffee hero image' width={800} height={400} priority />
-        </div>
-        <motion.section
-          className={styles.cardsContainer}
-          variants={cardsContainerVariants}
-          initial='hidden'
-          animate='visible'
-        >
-          {data.map((item) => (
-            <Card
-              key={item.id}
-              name={item.name}
-              description={item.description}
-              imgUrl={item.imgUrl}
-              url={`/coffee-store/${item.name.toLowerCase().split(/\w+/).join('-')}`}
-            />
-          ))}
-        </motion.section>
+        {!!coffeeStoresData.length && (
+          <motion.section variants={coffeeStoreVariants} initial='hidden' animate='visible'>
+            <motion.h2 variants={headerVariants} className={styles.cardsHeading}>
+              Nearby Stores
+            </motion.h2>
+            <motion.div variants={cardsVariants} className={styles.cardsContainer}>
+              {coffeeStoresData.map(item => (
+                <Card
+                  key={item.id}
+                  name={item.name}
+                  description={item.description}
+                  imgUrl={item.imgUrl}
+                  url={`/coffee-store/${getIdFromName(item.name)}`}
+                />
+              ))}
+            </motion.div>
+          </motion.section>
+        )}
       </main>
     </div>
   );
-}
+};
+
+export default Home;

@@ -1,0 +1,119 @@
+.store {
+  padding: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.backButton {
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+  transition: all 0.15s;
+}
+
+.backButton:hover {
+  filter: brightness(0.75);
+}
+
+.imageContainer {
+  z-index: 1;
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.content {
+  z-index: 0;
+}
+
+.name {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--text-main);
+  transition: all 0.15s;
+}
+
+.name:hover {
+  filter: brightness(0.9);
+}
+
+.address {
+  color: var(--text-white-100);
+}
+
+.description {
+  color: var(--text-white-100);
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .store {
+    padding: 5rem;
+  }
+
+  .backButton {
+    font-size: 1.1rem;
+    margin: 0.75rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .store {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .backButton {
+    font-size: 1.15rem;
+    margin: 1rem 0;
+  }
+
+  .container {
+    flex-direction: row;
+    gap: 0;
+    margin: 5rem 0 0 10rem;
+    max-width: 75rem;
+  }
+
+  .image {
+    transform: scale(1.1);
+  }
+
+  .content {
+    background-color: #FFF;
+    align-self: stretch;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 6rem;
+    border-radius: 0.5rem;
+  }
+
+  .name {
+    font-size: 3.5em;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .address {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.1rem;
+  }
+
+  .description {
+    color: var(--text-black);
+    width: 50%;
+    font-size: 1.5rem;
+  }
+}

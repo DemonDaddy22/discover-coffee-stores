@@ -25,6 +25,14 @@
   grid-template-columns: 1fr;
 }
 
+.cardsHeading {
+  color: var(--text-white-100);
+  font-weight: 700;
+  font-size: 1.75rem;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5);
+  margin: 1rem 0;
+}
+
 @media (min-width: 640px) {
   .container {
     padding-left: 1rem;
