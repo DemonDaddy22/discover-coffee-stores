@@ -56,6 +56,24 @@
   margin-top: 1.5rem;
 }
 
+.ratings {
+  font-weight: bold;
+  color: #FFF;
+}
+
+.ratingsButton {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+  position: relative;
+  top: 2px;
+}
+
 @media (min-width: 768px) {
   .store {
     padding: 5rem;
@@ -115,5 +133,9 @@
     color: var(--text-black);
     width: 50%;
     font-size: 1.5rem;
+  }
+
+  .ratings {
+    color: var(--text-black);
   }
 }

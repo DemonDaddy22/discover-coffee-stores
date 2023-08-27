@@ -78,7 +78,16 @@ const CoffeeStore: React.FC<Props> = ({ params }) => {
             </Link>
           </motion.h1>
           <motion.p variants={contentVariants} className={styles.address}>
-            {address}
+            {address} | <span className={styles.ratings}>4</span>
+            <button onClick={() => {}} className={styles.ratingsButton}>
+              <Image
+                src='/static/icons/heart.svg'
+                alt='ratings'
+                height={16}
+                width={16}
+                unoptimized={process.env.NODE_ENV === 'development'}
+              />
+            </button>
           </motion.p>
           <motion.p variants={contentVariants} className={styles.description}>
             {description}
