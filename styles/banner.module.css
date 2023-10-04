@@ -37,7 +37,14 @@
   line-height: 1.25rem;
 }
 
-/** 
+.error {
+  margin: 0.5rem 0;
+  color: rgb(255, 163, 163);
+  font-weight: lighter;
+  text-transform: capitalize;
+}
+
+/**
   Breakpoints:
   ------------
   sm: min-width: 640px; //small device
