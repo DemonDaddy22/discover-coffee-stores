@@ -3,8 +3,9 @@ import Banner from '@/components/Banner';
 import styles from './page.module.css';
 import Card from '@/components/Card';
 import { motion, Variants } from 'framer-motion';
-import coffeeStoresData from '../coffee-stores.json';
-import { getIdFromName } from '@/utils';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import { CoffeeStoresContext } from '@/context/CoffeeStoresContext';
+import useLocation from '@/hooks/useLocation';
 
 const coffeeStoreVariants: Variants = {
   hidden: { opacity: 0 },
@@ -22,23 +23,44 @@ const cardsVariants: Variants = {
 };
 
 const Home = () => {
+  const { location, locationError, locationLoading, handleTrackLocation } = useLocation();
+
+  const { coffeeStores, fetchCoffeeStores } = useContext(CoffeeStoresContext);
+
+  const [page, setPage] = useState(1);
+
+  const handleButtonClick = useCallback(() => {
+    handleTrackLocation();
+    setPage((prevPage) => prevPage + 1);
+  }, [handleTrackLocation]);
+
+  useEffect(() => {
+    if (location) {
+      fetchCoffeeStores(location, page);
+    }
+  }, [fetchCoffeeStores, location, page]);
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <Banner buttonText='View nearby shops' onButtonClick={() => {}} />
-        {!!coffeeStoresData.length && (
+        <Banner
+          buttonText={locationLoading ? 'Locating...' : 'View more nearby shops'}
+          onButtonClick={locationLoading ? () => {} : handleButtonClick}
+          locationError={locationError}
+        />
+        {!!coffeeStores.length && (
           <motion.section variants={coffeeStoreVariants} initial='hidden' animate='visible'>
             <motion.h2 variants={headerVariants} className={styles.cardsHeading}>
               Nearby Stores
             </motion.h2>
             <motion.div variants={cardsVariants} className={styles.cardsContainer}>
-              {coffeeStoresData.map(item => (
+              {coffeeStores.map(item => (
                 <Card
-                  key={item.id}
-                  name={item.name}
-                  description={item.description}
-                  imgUrl={item.imgUrl}
-                  url={`/coffee-store/${getIdFromName(item.name)}`}
+                  key={item.fsq_id}
+                  name={item.name ?? ''}
+                  description={item.description ?? ''}
+                  imgUrl={item.images?.small ?? ''}
+                  url={`/coffee-store/${item.fsq_id}`}
                 />
               ))}
             </motion.div>

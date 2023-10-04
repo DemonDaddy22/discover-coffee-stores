@@ -131,11 +131,17 @@
 
   .description {
     color: var(--text-black);
-    width: 50%;
-    font-size: 1.5rem;
+    width: 75%;
+    font-size: 1.2rem;
   }
 
   .ratings {
     color: var(--text-black);
+  }
+}
+
+@media (min-width: 1200px) {
+  .description {
+    width: 60%;
   }
 }
