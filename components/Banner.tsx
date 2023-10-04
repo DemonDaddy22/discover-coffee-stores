@@ -5,6 +5,7 @@ import Button from './UI/Button';
 
 interface IBannerProps extends IProps {
   buttonText: string;
+  locationError: string | null;
   onButtonClick: () => void;
 }
 
@@ -18,7 +19,7 @@ const contentVariants = {
   visible: { opacity: 1, x: 0 },
 };
 
-const Banner: React.FC<IBannerProps> = ({ buttonText, onButtonClick }) => {
+const Banner: React.FC<IBannerProps> = ({ buttonText, locationError, onButtonClick }) => {
   return (
     <motion.section variants={bannerVariants} initial='hidden' animate='visible' className={styles.container}>
       <motion.div variants={contentVariants}>
@@ -31,6 +32,12 @@ const Banner: React.FC<IBannerProps> = ({ buttonText, onButtonClick }) => {
         <Button className={styles.button} onClick={onButtonClick}>
           {buttonText}
         </Button>
+        {locationError && (
+          <p className={styles.error}>
+            {'* '}
+            {locationError}
+          </p>
+        )}
       </motion.div>
     </motion.section>
   );

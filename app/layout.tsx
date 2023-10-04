@@ -1,3 +1,4 @@
+import CoffeeStoresContextProvider from '@/context/CoffeeStoresContext';
 import './globals.css';
 import { IBM_Plex_Sans } from 'next/font/google';
 
@@ -12,7 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className={ibmPlexSans.className}>{children}</body>
+      <body className={ibmPlexSans.className}>
+        <CoffeeStoresContextProvider>{children}</CoffeeStoresContextProvider>
+      </body>
     </html>
   );
 }

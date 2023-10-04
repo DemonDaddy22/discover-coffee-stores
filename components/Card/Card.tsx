@@ -49,7 +49,7 @@ const Card: React.FC<Props> = ({ name, description, imgUrl, url }) => {
             initial={false}
             animate={isHovering ? 'visible' : 'hidden'}
           >
-            {description}
+            {description.substring(0, 100)}...
           </motion.p>
         </div>
       </motion.section>
